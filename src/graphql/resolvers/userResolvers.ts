@@ -2,7 +2,8 @@ import User from '../../models/user';
 import {IUser} from '../../interfaces';
 
 const signup = ({name}: {name: string}) => {
-  User.findOne({
+  // need to return a promise
+  return User.findOne({
     name
   }, (err, user) => {
     if (!user) {
@@ -28,7 +29,7 @@ interface IDBUser extends IUser {
 }
 const getUser = ({name}: {name: string}) => {
   console.log('try to find user: ', name);
-  User.findOne({name}, (err: any, user: any) => {
+  return User.findOne({name}, (err: any, user: any) => {
     if (user) {
       console.log('get user back from DB: ', user);
       let result = {
