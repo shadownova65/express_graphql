@@ -6,18 +6,20 @@ export default buildSchema(`
   }
 
   type Detail {
-    _id: ID!
-    name: String
+    _id: ID
+    pokemon: Pokemon
+    name: String!
     base_exp: Int
     abilities: [String]
     height: Int
     weight: Int
     avatar: String
     types: [String]
+
   }
 
   type Pokemon {
-    _id: ID!
+    _id: ID
     name: String!
     url: String!
     detail: Detail
@@ -26,6 +28,7 @@ export default buildSchema(`
   type User {
     _id: String!
     name: String!
+    pokemons: [Pokemon]
   }
 
   input UserInput {
@@ -35,10 +38,14 @@ export default buildSchema(`
   type RootQuery {
     user(name: String!): User
     hello: String
+    addPokemon(userId: String!): String
+    getPokemons: [Detail]
+    getDetail(name: String!): Detail
   }
 
   type RootMutation {
     createUser(name: String!): User
+
   }
 
   schema {

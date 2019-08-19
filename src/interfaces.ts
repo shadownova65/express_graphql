@@ -9,9 +9,10 @@ export interface IDetail {
 }
 
 export interface IPokemon {
+  _id?: string,
   name: string,
   url: string,
-  detail: IDetail
+  detail?: IDetail
 }
 
 export interface IUser {

@@ -32,11 +32,12 @@ const getUser = ({name}: {name: string}) => {
   return User.findOne({name}, (err: any, user: any) => {
     if (user) {
       console.log('get user back from DB: ', user);
-      let result = {
-        name: user.name,
-        _id: user._id
-      }
+      let result = user
+        // name: user.name,
+        // _id: user._id
+
       console.log('return: ', result);
+
       return result;
     } else {
       console.log('Error in finding user: ', err);
